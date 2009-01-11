@@ -1,0 +1,71 @@
+<!-- Marine Wireless Navigation Server Configuration File -->
+<server>
+	<!-- Define the available connection layers -->
+	<connectionlayers>
+		<impl name="SerialPort" 
+			  class="mw.server.plugin.connection.SerialPortConnection"/>
+		<impl name="ServerSocket" 
+	   		  class="mw.server.plugin.connection.ServerSocketConnection"/>
+ 		<impl name="NMEAFile" 
+			  class="mw.server.plugin.connection.NMEAFileConnection"/>
+	</connectionlayers>
+	
+	<!-- Define the available message handlers -->
+	<messagehandlers>
+		<impl name="NMEA" class="mw.server.plugin.message.NMEAMessageHandler"/>
+	</messagehandlers>
+	
+	<!-- Define the available protocol handlers -->
+	<protocolhandlers>
+		<impl name="RosePointNav" class="mw.server.plugin.protocol.RPNProtocol"/>
+		<impl name="RawNMEA" class="mw.server.plugin.protocol.RawNMEAProtocol"/>	
+	</protocolhandlers>
+	
+	<!-- Define the available mediators -->
+	<mediators>
+		<impl name="ConnectionDirectorMediator"
+			class="mw.server.plugin.mediator.ConnectionDirectorMediator"/>
+	</mediators>	
+	
+	<!-- USERS EDIT BELOW THIS SECTION TO LISTEN ON NEW SERIAL OR SOCKET PORTS-->
+	<features>
+	    <feature name="errorled" enabled="true" options="log/errorled"/>
+	</features>
+
+	<!-- Define the actual mediators -->
+	<!-- TURNED OFF FOR TESTING 
+	<mediator name="NMEAonCOM1" type="ConnectionDirectorMediator" restart="true">
+		<connectionlayer type="SerialPort">
+			<parameters>comm=COM1:baudrate=4800:bitsperchar=8:parity=N:stopbits=1</parameters>
+		</connectionlayer>
+		<messagehandler type="NMEA"/>
+		<protocolhandler type="RawNMEA"/>
+	</mediator>
+	-->
+	
+	<mediator name="NMEAFromFile" type="ConnectionDirectorMediator">
+		<connectionlayer type="NMEAFile">
+			<parameters>file=samples/rpnnmea.log:delay=20:loop=true</parameters>
+		</connectionlayer>
+		<messagehandler type="NMEA"/>
+		<protocolhandler type="RawNMEA"/>
+	</mediator>
+	
+	<mediator name="RawNMEAonPort8000" type="ConnectionDirectorMediator">
+		<connectionlayer type="ServerSocket">
+			<parameters>port=8000</parameters>
+		</connectionlayer>
+		<messagehandler type="NMEA"/>
+		<protocolhandler type="RawNMEA"/>
+	</mediator>
+
+	<!--	
+	<mediator name="RosePointNavOnPort8080" type="ConnectionDirectorMediator">
+		<connectionlayer type="ServerSocket">
+			<parameters>port=8080</parameters>
+		</connectionlayer>
+		<messagehandler type="NMEA"/>
+		<protocolhandler type="RosePointNav"/>
+	</mediator>
+	-->
+</server>

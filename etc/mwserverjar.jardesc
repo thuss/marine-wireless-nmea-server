@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+    <jar path="C:/Temp/mwserver.jar"/>
+    <options overwrite="false" compress="true" exportErrors="true" exportWarnings="true" saveDescription="true" descriptionLocation="/MarineWirelessServer/etc/mwserverjar.jardesc" useSourceFolders="false" buildIfNeeded="true"/>
+    <manifest manifestVersion="1.0" usesManifest="true" reuseManifest="false" saveManifest="false" generateManifest="true" manifestLocation="">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false">
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.connection"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.display"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.mediator"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.configuration"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.plugin.protocol"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.plugin.connection"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.protocol"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.message"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.plugin.mediator"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.plugin.message"/>
+        <javaElement handleIdentifier="=MarineWirelessServer/src&lt;mw.server.director"/>
+    </selectedElements>
+</jardesc>
