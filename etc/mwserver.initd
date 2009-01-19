@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# Marine Wireless Server
+#
+
+# JAVA HOME
+# export JAVA_HOME=/usr/local/kaffe
+export JAVA_HOME=/usr/local/j2re1.4.2_04
+
+# Files
+MWSHOME=/usr/local/mws
+JAVA=$JAVA_HOME/bin/java
+MWJAR=$MWSHOME/mwserver.jar
+KXMLJAR=$MWSHOME/kxml.jar
+LOG4JJAR=$MWSHOME/log4j-1.2.8.jar
+CONFIG=$MWSHOME/config.xml
+
+# Options
+# JAVA_OPTS="-ms5m -mx5m"
+JAVA_OPTS="-Xms8m -Xmx16m"
+
+# Classpath
+export CLASSPATH="$MWJAR:$KXMLJAR:$LOG4JJAR:$MWSHOME"
+
+test -x $JAVA || exit 0
+test -e $MWJAR || exit 0
+test -e $KXMLJAR || exit 0
+test -e $CONFIG || exit 0
+
+MWPID=/var/run/mwserver.pid
+
+case "$1" in
+	start)
+		echo -n "Starting Marine Wireless server: mwserver"
+		# stty -F /dev/ttyS0 4800 > /dev/null 2>&1
+ 		. /etc/mwnmea
+		start-stop-daemon --start --quiet --pidfile $MWPID \
+			-b -m --exec $JAVA -- $JAVA_OPTS \
+			        mw.server.Server -f $CONFIG 
+		echo "."
+		;;
+	stop)
+		echo -n "Stopping Marine Wireless server: mwserver"
+		start-stop-daemon --stop --quiet --pidfile $MWPID
+		echo "."
+		;;
+	debug)
+		echo -n "Starting Marine Wireless server: mwserver"
+		stty -F /dev/ttyS0 4800 > /dev/null 2>&1
+		start-stop-daemon --start --quiet \
+			--exec $JAVA -- $JAVA_OPTS \
+			        mw.server.Server -f $CONFIG 
+		echo "."
+		;;
+	*)
+		echo "Usage: /etc/init.d/mwserver {start|stop|debug}"
+		exit 1 
+esac
+
+exit 0
