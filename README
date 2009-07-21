@@ -1,3 +1,3 @@
-This tiny server reads and writes NMEA on a serial port and makes it available via TCP/IP.
+This embedded server reads and writes NMEA on a serial port and makes it available via wireless 802.11.
 
 This is the code that shipped on the Marine Marines Navigation Server http://marinewireless.us
