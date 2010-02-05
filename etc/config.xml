@@ -29,11 +29,12 @@
 	
 	<!-- USERS EDIT BELOW THIS SECTION TO LISTEN ON NEW SERIAL OR SOCKET PORTS-->
 	<features>
-	    <feature name="errorled" enabled="true" options="log/errorled"/>
+    <!-- <feature name="errorled" enabled="true" options="log/errorled"/> -->
 	</features>
 
 	<!-- Define the actual mediators -->
-	<!-- TURNED OFF FOR TESTING 
+	<!-- Example for using COM1 on Windows -->
+	<!--
 	<mediator name="NMEAonCOM1" type="ConnectionDirectorMediator" restart="true">
 		<connectionlayer type="SerialPort">
 			<parameters>comm=COM1:baudrate=4800:bitsperchar=8:parity=N:stopbits=1</parameters>
@@ -41,6 +42,17 @@
 		<messagehandler type="NMEA"/>
 		<protocolhandler type="RawNMEA"/>
 	</mediator>
+	-->
+	
+	<!-- Example for using /dev/ttyS0 on Linux -->
+	<!--
+	<mediator name="NMEAonDevTTYS0" type="ConnectionDirectorMediator">
+            <connectionlayer type="SerialPort">
+                    <parameters>comm=/dev/ttyS0:baudrate=4800:bitsperchar=8:parity=N:stopbits=1</parameters>
+            </connectionlayer>
+            <messagehandler type="NMEA"/>
+            <protocolhandler type="RawNMEA"/>
+    </mediator>
 	-->
 	
 	<mediator name="NMEAFromFile" type="ConnectionDirectorMediator">

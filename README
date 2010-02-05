@@ -1,3 +1,10 @@
 This embedded server reads and writes NMEA on a serial port and makes it available via wireless 802.11.
 
 This is the code that shipped on the Marine Marines Navigation Server http://marinewireless.us
+
+It is designed to run in a very small memory footprint. The first Marine Wireless Server was an embedded Soekris board with 32MB of ram. The server works on Windows, Linux, and Mac. To run it first edit etc/config.xml and then:
+
+export CLASSPATH=lib/mwserver.jar:lib/log4j-1.2.8.jar:lib/kxml.jar 
+java mw.server.Server -f etc/config.xml
+
+There's not a lot of documentation here so please feel free to submit patches. 
