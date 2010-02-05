@@ -18,10 +18,10 @@ It is designed to run in a very small memory footprint on a Java 1.4 JRE (but it
 
 To run the server using using the included sample NMEA file for testing:
 
-cd marine-wireless-nmea-server
-export CLASSPATH=lib/mwserver.jar:lib/log4j-1.2.8.jar:lib/kxml.jar 
-java mw.server.Server -f etc/config.xml
-telnet localhost 8000
+   cd marine-wireless-nmea-server
+   export CLASSPATH=lib/mwserver.jar:lib/log4j-1.2.8.jar:lib/kxml.jar 
+   java mw.server.Server -f etc/config.xml
+   telnet localhost 8000 <-- and watch the NMEA data scroll by
 
 To get it to read/write to the serial port where your NMEA Mux is connected you'll want to edit config.xml and comment out the NMEAFromFile mediator and uncomment either the NMEAonCOM1 (Windows) or NMEAonDevTTYS0 (Linux) mediator. Be sure to adjust the baudrate as well.
 
