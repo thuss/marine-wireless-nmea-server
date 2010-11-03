@@ -1,6 +1,6 @@
-= Marine Wireless NMEA Server
+= Marine Wireless NMEA Wifi Server
 
-This tiny embedded Java NMEA server reads and writes NMEA 0183 on a serial port and makes it available via TCP on port 8000. The most common use case is to make your navigation instrument data available wirelessly via 802.11 such as http://www.marinewireless.us/product_info.php?products_id=28
+This tiny embedded Java NMEA server reads and writes NMEA 0183 on a serial port and makes it available via TCP on port 8000. The most common use case is to make your navigation instrument data available wirelessly via 802.11 wifi such as http://www.marinewireless.us/product_info.php?products_id=28
 
 = TODO 
 
